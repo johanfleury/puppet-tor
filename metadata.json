@@ -1,0 +1,26 @@
+{
+  "name": "arcaik-tor",
+  "version": "0.1.0",
+  "author": "Arcaik",
+  "summary": "Configuration and management of Tor relays",
+  "license": "GPL-3.0",
+  "source": "https://git.br0.fr/puppet/puppet-tor",
+  "project_page": "https://git.br0.fr/puppet/puppet-tor",
+  "issues_url": "https://git.br0.fr/puppet/puppet-tor/issues",
+  "tags": ["tor"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    }
+  ],
+  "dependencies": [
+    { "name": "puppetlabs-stdlib" },
+    { "name": "puppetlabs-inifile" }
+  ],
+  "requirements": [
+    { "name": "puppet", "version_requirement": ">= 3.0.0 < 5.0.0" }
+  ]
+}

@@ -1,0 +1,20 @@
+---
+sudo: false
+language: ruby
+cache: bundler
+script: "bundle exec rake validate lint spec"
+before_install:
+  - gem update bundler
+matrix:
+  fast_finish: true
+  include:
+  - rvm: 2.1
+    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" FUTURE_PARSER="yes"
+  - rvm: 2.1
+    env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes"
+  - rvm: 2.2
+    env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes"
+  - rvm: 2.3.1
+    env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes"
+notifications:
+  email: false
