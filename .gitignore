@@ -1,0 +1,4 @@
+pkg/
+vendor/
+.bundle/
+Gemfile.lock

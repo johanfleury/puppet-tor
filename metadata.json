@@ -1,6 +1,6 @@
 {
   "name": "arcaik-tor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Arcaik",
   "summary": "Configuration and management of Tor relays",
   "license": "GPL-3.0",
@@ -17,8 +17,7 @@
     }
   ],
   "dependencies": [
-    { "name": "puppetlabs-stdlib" },
-    { "name": "puppetlabs-inifile" }
+    { "name": "puppetlabs-stdlib" }
   ],
   "requirements": [
     { "name": "puppet", "version_requirement": ">= 3.0.0 < 5.0.0" }
