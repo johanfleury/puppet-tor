@@ -1,6 +1,6 @@
 {
   "name": "arcaik-tor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Johan Fleury (Arcaik)",
   "summary": "Configuration and management of Tor relays",
   "license": "GPL-3.0",
