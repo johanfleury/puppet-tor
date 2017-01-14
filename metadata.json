@@ -1,12 +1,12 @@
 {
   "name": "arcaik-tor",
   "version": "0.1.1",
-  "author": "Arcaik",
+  "author": "Johan Fleury (Arcaik)",
   "summary": "Configuration and management of Tor relays",
   "license": "GPL-3.0",
-  "source": "https://git.br0.fr/puppet/puppet-tor",
-  "project_page": "https://git.br0.fr/puppet/puppet-tor",
-  "issues_url": "https://git.br0.fr/puppet/puppet-tor/issues",
+  "source": "https://github.com/johanfleury/puppet-tor",
+  "project_page": "https://github.com/johanfleury/puppet-tor",
+  "issues_url": "https://github.com/johanfleury/puppet-tor/issues",
   "tags": ["tor"],
   "operatingsystem_support": [
     {
