@@ -9,6 +9,5 @@ class tor::config inherits tor {
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    require => Package[$tor::package_name],
   }
 }

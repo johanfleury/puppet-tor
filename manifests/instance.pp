@@ -30,28 +30,24 @@ define tor::instance (
   $service_name = "tor@${name}" # This module only works with systemd
 
   if $name == 'default' {
-    $config_dir = $tor::config_dir
+    $config_dir = $::tor::config_dir
     $config_file = "${config_dir}/torrc"
     $config_file_owner = 'tor'
     $config_file_group = 'tor'
   }
   else {
-    $config_dir = "${tor::instances_config_dir}/${name}"
+    $config_dir = "${::tor::instances_config_dir}/${name}"
     $config_file = "${config_dir}/torrc"
     $config_file_owner = "_tor-${name}"
     $config_file_group = "_tor-${name}"
 
-    ensure_resource('file', $tor::instances_config_dir, {
+    ensure_resource('file', $::tor::instances_config_dir, {
       ensure  => directory,
       purge   => true,
       recurse => true,
       owner   => 'root',
       group   => 'root',
       mode    => '0755',
-      require => [
-        Package[$tor::package_name],
-        File[$tor::config_dir],
-      ]
     })
 
     file { $config_dir:
@@ -61,10 +57,6 @@ define tor::instance (
       owner   => $config_file_owner,
       group   => $config_file_group,
       mode    => '0750',
-      require => [
-        Package[$tor::package_name],
-        File[$tor::instances_config_dir],
-      ]
     }
   }
 
@@ -74,19 +66,13 @@ define tor::instance (
     group   => $config_file_group,
     mode    => '0640',
     content => template('tor/torrc.erb'),
-    require => [
-      Package[$tor::package_name],
-      File[$config_dir],
-    ],
+    require => File[$config_dir],
     notify  => Service[$service_name],
   }
 
   service { $service_name:
     ensure  => $service_ensure,
     enable  => $service_enable,
-    require => [
-      Package[$tor::package_name],
-      File[$config_file],
-    ],
+    require => File[$config_file],
   }
 }

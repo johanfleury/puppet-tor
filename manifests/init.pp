@@ -11,5 +11,8 @@ class tor (
   contain ::tor::install
   contain ::tor::config
 
+  Class['::tor::install']
+  -> Class['::tor::config']
+
   create_resources('::tor::instance', $instances, { ensure => present })
 }

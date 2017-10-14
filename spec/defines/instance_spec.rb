@@ -14,14 +14,14 @@ describe 'tor::instance' do
         'owner'  => 'tor',
         'group'  => 'tor',
         'mode'   => '0640',
-      ).that_requires(['Package[tor]', 'File[/etc/tor]'])
+      ).that_requires('File[/etc/tor]')
     end
 
     it do
       is_expected.to contain_service('tor@default').with(
         'ensure' => 'running',
         'enable' => 'true'
-      ).that_requires(['Package[tor]', 'File[/etc/tor/torrc]'])
+      ).that_requires('File[/etc/tor/torrc]')
     end
   end
 
@@ -37,14 +37,14 @@ describe 'tor::instance' do
         'owner'  => 'tor',
         'group'  => 'tor',
         'mode'   => '0640',
-      ).that_requires(['Package[tor]', 'File[/etc/tor]'])
+      ).that_requires('File[/etc/tor]')
     end
 
     it do
       is_expected.to contain_service('tor@default').with(
         'ensure' => 'stopped',
         'enable' => 'false',
-      ).that_requires(['Package[tor]', 'File[/etc/tor/torrc]'])
+      ).that_requires('File[/etc/tor/torrc]')
     end
   end
 
@@ -61,7 +61,7 @@ describe 'tor::instance' do
         'owner'   => 'root',
         'group'   => 'root',
         'mode'    => '0755',
-      ).that_requires(['Package[tor]', 'File[/etc/tor]'])
+      )
     end
 
     it do
@@ -72,7 +72,7 @@ describe 'tor::instance' do
         'owner'   => '_tor-test1',
         'group'   => '_tor-test1',
         'mode'    => '0750',
-      ).that_requires(['Package[tor]', 'File[/etc/tor/instances]'])
+      ).that_requires('File[/etc/tor/instances]')
     end
 
     it do
@@ -81,14 +81,14 @@ describe 'tor::instance' do
         'owner'  => '_tor-test1',
         'group'  => '_tor-test1',
         'mode'   => '0640',
-      ).that_requires(['Package[tor]', 'File[/etc/tor/instances/test1]'])
+      ).that_notifies('Service[tor@test1]').that_requires('File[/etc/tor/instances/test1]')
     end
 
     it do
       is_expected.to contain_service('tor@test1').with(
         'ensure' => 'running',
         'enable' => 'true',
-      ).that_requires(['Package[tor]', 'File[/etc/tor/instances/test1/torrc]'])
+      ).that_requires('File[/etc/tor/instances/test1/torrc]')
     end
   end
 
@@ -106,7 +106,7 @@ describe 'tor::instance' do
         'owner'   => 'root',
         'group'   => 'root',
         'mode'    => '0755',
-      ).that_requires(['Package[tor]', 'File[/etc/tor]'])
+      )
     end
 
     it do
@@ -117,7 +117,7 @@ describe 'tor::instance' do
         'owner'   => '_tor-test2',
         'group'   => '_tor-test2',
         'mode'    => '0750',
-      ).that_requires(['Package[tor]', 'File[/etc/tor/instances]'])
+      ).that_requires('File[/etc/tor/instances]')
     end
 
     it do
@@ -126,14 +126,14 @@ describe 'tor::instance' do
         'owner'  => '_tor-test2',
         'group'  => '_tor-test2',
         'mode'   => '0640',
-      ).that_requires(['Package[tor]', 'File[/etc/tor/instances/test2]'])
+      ).that_notifies('Service[tor@test2]').that_requires('File[/etc/tor/instances/test2]')
     end
 
     it do
       is_expected.to contain_service('tor@test2').with(
         'ensure' => 'stopped',
         'enable' => 'false',
-      ).that_requires(['Package[tor]', 'File[/etc/tor/instances/test2/torrc]'])
+      ).that_requires('File[/etc/tor/instances/test2/torrc]')
     end
   end
 end
