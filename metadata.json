@@ -1,13 +1,13 @@
 {
   "name": "arcaik-tor",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Johan Fleury (Arcaik)",
   "summary": "Configuration and management of Tor relays",
   "license": "GPL-3.0",
   "source": "https://github.com/johanfleury/puppet-tor",
   "project_page": "https://github.com/johanfleury/puppet-tor",
   "issues_url": "https://github.com/johanfleury/puppet-tor/issues",
-  "tags": ["tor"],
+  "tags": ["tor", "onion", "router"],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
@@ -23,6 +23,6 @@
     }
   ],
   "requirements": [
-    { "name": "puppet", "version_requirement": ">= 4.0.0 < 5.0.0" }
+    { "name": "puppet", "version_requirement": ">= 4.0.0 < 6.0.0" }
   ]
 }

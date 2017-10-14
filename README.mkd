@@ -37,7 +37,7 @@ The `tor::instance` type manages a Tor instance configuration.
 
 ### Beginning with `tor`
 
-You must first include the main class with: `include ::tor'`, then you can
+You must first include the main class with: `include ::tor`, then you can
 create an instance with:
 
 ```puppet
@@ -124,8 +124,7 @@ Optional. String (absent or present).
 Optional. Hash. Sets the Tor instance configuration values (default: an empty
 hash).
 
-To repeat the `torrc` options multiple times, you can use an `Array` as value
-for members of `settings`.
+To repeat an options multiple times, its value can be an `Array`.
 
 For instance:
 
