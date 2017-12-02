@@ -13,7 +13,7 @@ describe 'tor::instance' do
         'ensure' => 'file',
         'owner'  => 'tor',
         'group'  => 'tor',
-        'mode'   => '0640',
+        'mode'   => '0640'
       ).that_requires('File[/etc/tor]')
     end
 
@@ -27,7 +27,11 @@ describe 'tor::instance' do
 
   context 'with title `default` and ensure => absent' do
     let(:title) { 'default' }
-    let(:params) { {:ensure => 'absent'} }
+    let(:params) do
+      {
+        'ensure' => 'absent'
+      }
+    end
 
     it { is_expected.to compile.with_all_deps }
 
@@ -36,14 +40,14 @@ describe 'tor::instance' do
         'ensure' => 'absent',
         'owner'  => 'tor',
         'group'  => 'tor',
-        'mode'   => '0640',
+        'mode'   => '0640'
       ).that_requires('File[/etc/tor]')
     end
 
     it do
       is_expected.to contain_service('tor@default').with(
         'ensure' => 'stopped',
-        'enable' => 'false',
+        'enable' => 'false'
       ).that_requires('File[/etc/tor/torrc]')
     end
   end
@@ -60,7 +64,7 @@ describe 'tor::instance' do
         'recurse' => 'true',
         'owner'   => 'root',
         'group'   => 'root',
-        'mode'    => '0755',
+        'mode'    => '0755'
       )
     end
 
@@ -71,7 +75,7 @@ describe 'tor::instance' do
         'recurse' => 'true',
         'owner'   => '_tor-test1',
         'group'   => '_tor-test1',
-        'mode'    => '0750',
+        'mode'    => '0750'
       ).that_requires('File[/etc/tor/instances]')
     end
 
@@ -80,21 +84,25 @@ describe 'tor::instance' do
         'ensure' => 'file',
         'owner'  => '_tor-test1',
         'group'  => '_tor-test1',
-        'mode'   => '0640',
+        'mode'   => '0640'
       ).that_notifies('Service[tor@test1]').that_requires('File[/etc/tor/instances/test1]')
     end
 
     it do
       is_expected.to contain_service('tor@test1').with(
         'ensure' => 'running',
-        'enable' => 'true',
+        'enable' => 'true'
       ).that_requires('File[/etc/tor/instances/test1/torrc]')
     end
   end
 
   context 'with title `test2` and ensure => absent' do
     let(:title) { 'test2' }
-    let(:params) { {:ensure => 'absent'} }
+    let(:params) do
+      {
+        'ensure' => 'absent'
+      }
+    end
 
     it { is_expected.to compile.with_all_deps }
 
@@ -105,7 +113,7 @@ describe 'tor::instance' do
         'recurse' => 'true',
         'owner'   => 'root',
         'group'   => 'root',
-        'mode'    => '0755',
+        'mode'    => '0755'
       )
     end
 
@@ -116,7 +124,7 @@ describe 'tor::instance' do
         'recurse' => 'true',
         'owner'   => '_tor-test2',
         'group'   => '_tor-test2',
-        'mode'    => '0750',
+        'mode'    => '0750'
       ).that_requires('File[/etc/tor/instances]')
     end
 
@@ -125,14 +133,14 @@ describe 'tor::instance' do
         'ensure' => 'absent',
         'owner'  => '_tor-test2',
         'group'  => '_tor-test2',
-        'mode'   => '0640',
+        'mode'   => '0640'
       ).that_notifies('Service[tor@test2]').that_requires('File[/etc/tor/instances/test2]')
     end
 
     it do
       is_expected.to contain_service('tor@test2').with(
         'ensure' => 'stopped',
-        'enable' => 'false',
+        'enable' => 'false'
       ).that_requires('File[/etc/tor/instances/test2/torrc]')
     end
   end

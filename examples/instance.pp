@@ -6,7 +6,7 @@ tor::instance { 'default':
     Nickname => 'default',
     OrPort   => 9050,
     DirPort  => 9030,
-  }
+  },
 }
 
 tor::instance { 'test1':
@@ -15,7 +15,7 @@ tor::instance { 'test1':
     Nickname => 'test1',
     OrPort   => 9050,
     DirPort  => 9030,
-  }
+  },
 }
 
 tor::instance { 'test2':

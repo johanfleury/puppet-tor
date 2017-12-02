@@ -18,20 +18,28 @@ describe 'tor' do
         'recurse' => 'true',
         'owner'   => 'root',
         'group'   => 'root',
-        'mode'    => '0755',
+        'mode'    => '0755'
       )
     end
   end
 
   context 'with defined instances' do
-    let(:params) { { :instances => {
-      'test1' => {
-        'settings' => {
-          'Nickname' => 'test1', 'OrPort' => '9050', 'OrPort' => '9030'
+    let(:params) do
+      {
+        'instances' => {
+          'test1' => {
+            'settings' => {
+              'Nickname' => 'test1',
+              'OrPort'   => '9050',
+              'DirPort'  => '9030'
+            }
+          },
+          'test2' => {
+            'ensure' => 'absent'
+          }
         }
-      },
-      'test2' => {'ensure' => 'absent'}
-    } } }
+      }
+    end
 
     it { is_expected.to compile.with_all_deps }
 
@@ -49,7 +57,7 @@ describe 'tor' do
         'recurse' => 'true',
         'owner'   => 'root',
         'group'   => 'root',
-        'mode'    => '0755',
+        'mode'    => '0755'
       ).that_requires('Package[tor]')
     end
 
